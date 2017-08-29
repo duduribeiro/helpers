@@ -41,6 +41,14 @@ module Hanami
         # @see Hanami::Helpers::FormHelper::FormBuilder#select
         SELECTED = 'selected'.freeze
 
+        # Disabled attribute value for option
+        #
+        # @since x.x.x
+        # @api private
+        #
+        # @see Hanami::Helpers::FormHelper::FormBuilder#select
+        DISABLED = 'disabled'.freeze
+
         # Separator for accept attribute of file input
         #
         # @since 0.2.0
@@ -1205,7 +1213,7 @@ module Hanami
           selected   = options.delete(:selected)
 
           super(attributes) do
-            option(prompt) unless prompt.nil?
+            option(prompt, disabled: DISABLED) unless prompt.nil?
 
             values.each do |content, value|
               if _select_option_selected?(value, selected, _value(name), attributes[:multiple])
