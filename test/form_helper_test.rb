@@ -2283,7 +2283,7 @@ describe Hanami::Helpers::FormHelper do
           select :store, option_values, multiple: true, options: { prompt: 'Choose your country' }
         end.to_s
 
-        actual.must_include %(<select name="book[store][]" id="book-store" multiple="multiple">\n<option disabled="disabled">Choose your country</option>\n<option value="it">Italy</option>\n<option value="us">United States</option>\n</select>)
+        actual.must_include %(<select name="book[store][]" id="book-store" multiple="multiple">\n<option disabled="disabled" selected="selected">Choose your country</option>\n<option value="it">Italy</option>\n<option value="us">United States</option>\n</select>)
       end
     end
 
@@ -2369,7 +2369,7 @@ describe Hanami::Helpers::FormHelper do
           select :store, option_values, options: { prompt: 'Select a store' }
         end.to_s
 
-        actual.must_include %(<select name="book[store]" id="book-store">\n<option disabled="disabled">Select a store</option>\n<option value="it">Italy</option>\n<option value="us">United States</option>\n</select>)
+        actual.must_include %(<select name="book[store]" id="book-store">\n<option disabled="disabled" selected="selected">Select a store</option>\n<option value="it">Italy</option>\n<option value="us">United States</option>\n</select>)
       end
 
       it 'allows blank string' do
@@ -2377,7 +2377,7 @@ describe Hanami::Helpers::FormHelper do
           select :store, option_values, options: { prompt: '' }
         end.to_s
 
-        actual.must_include %(<select name="book[store]" id="book-store">\n<option disabled="disabled"></option>\n<option value="it">Italy</option>\n<option value="us">United States</option>\n</select>)
+        actual.must_include %(<select name="book[store]" id="book-store">\n<option disabled="disabled" selected="selected"></option>\n<option value="it">Italy</option>\n<option value="us">United States</option>\n</select>)
       end
 
       describe 'with values' do
